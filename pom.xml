@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.destinofacil</groupId>
 	<artifactId>DestinoFacil_MVCSecurity</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1</version>
 	<name>DestinoFacil_MVCSecurity</name>
 	<description>Projeto Recode-Pro 2023</description>
 	<properties>
