@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout ('Promoções', ~{::main}, ~{::styles}, ~{::script})}">
+
+<head th:replace="~{fragments/head :: head ('DestinoFácil | Promoções')}"></head>
+
+<body>
+	
+	<main>
+		<section class="py-5 container">
+			<div>
+				<a class="btn btn-lg btn-primary mb-3 shadow" th:href="@{/promocoes/cadastrar}">Nova Promoção</a>
+			</div>
+			<div class="card shadow border-0">
+				<div class="card-header p-4 border-0 d-flex my-auto">
+					<i class="bi bi-tags-fill fs-3 me-2 iconsStyle"></i>
+					<h5>Promoções</h5>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-hover table-borderless color-black">
+							<thead>
+								<tr>
+									<th scope="col">ID</th>
+									<th scope="col">Pacote</th>
+									<th scope="col">Desconto</th>
+									<th scope="col">Validade</th>
+									<th scope="col">Opções</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="promocao : ${promocoes}">
+									<td th:text="${promocao.idPromocao}"></td>
+									<td th:text="${promocao.pacote}"></td>
+									<td th:text="${promocao.desconto + '%'}"></td>
+									<td th:text="${promocao.validadePromocao}"></td>
+									<td class="d-flex gap-2">
+										<!-- Editar -->
+										<a class="btn btn-primary d-flex align-items-center" title="Editar" th:href="@{/promocoes/{id}/editar (id=${promocao.idPromocao})}">
+											<i class="bi bi-pencil-square me-1"></i>
+											Editar
+										</a>
+
+										<!-- Excluir -->
+										<a class="btn btn-danger d-flex align-items-center" title="Excluir"
+											data-bs-toggle="modal"
+											th:data-bs-target="'#confirmDeleteModal-' + ${promocao.idPromocao}">
+											<i class="bi bi-trash3 me-1"></i>
+											Excluir
+										</a>
+										<!-- Inicio Modal Delete -->
+										<div class="modal fade" th:id="'confirmDeleteModal-' + ${promocao.idPromocao}"
+											tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content align-items-center p-3">
+													<img src="/imagens/delete_aviso.jpg" height="150" width="148" />
+													<div class="modal-body text-center">
+														<div class="modalTitle">Tem a certeza?</div>
+														<span>Deseja excluir a promocao do pacote
+															<span th:text="${promocao.pacote}"></span> -
+															<span th:text="${promocao.desconto}"></span>% de desconto?
+														</span>
+													</div>
+													<div class="p-2 d-flex gap-2 justify-content-center">
+														<a type="button"
+															th:href="@{/promocoes/{id}/excluir (id=${promocao.idPromocao})}"
+															class="btn btn-danger">Confirmar</a>
+														<a type="button" class="btn btn-primary"
+															href="/promocoes">Cancelar</a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Fim Modal Delete-->
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+</body>
+
+</html>

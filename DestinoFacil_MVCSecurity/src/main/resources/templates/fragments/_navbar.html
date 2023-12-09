@@ -1,0 +1,57 @@
+<header th:fragment="navbar">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<div class="container">
+			<a class="navbar-brand mb-2" href="/">
+				<img src="/imagens/logo_destinofacil.png" alt="logo" width="145" height="39">
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+				aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarMenu">
+				<div class="navbar-nav ms-auto">
+					<a class="nav-link" href="/">Home</a>
+					<a class="nav-link" href="/destino">Destinos</a>
+					<a class="nav-link" href="/promocoes/promocoesdisponiveis">Promoções</a>
+					<a class="nav-link" href="/contato">Contato</a>
+					<div th:if="${#authorization.expression('isAuthenticated()')}">
+						<div class="dropdown">
+							<a class="btn btnGroupFor dropdown-toggle" href="#" role="button"
+								data-bs-toggle="dropdown" aria-expanded="false">
+								<i class="bi bi-person-fill-gear fs-4 me-2"></i>
+								 <small th:text="${#authentication.name}"></small> 
+							</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="/clientes">
+									<i class="bi bi-people"></i>
+									Clientes
+								</a>
+								<a class="dropdown-item" href="/destinos">
+									<i class="bi bi-geo-alt"></i>
+									Destinos
+								</a>
+								<a class="dropdown-item" href="/promocoes">
+									<i class="bi bi-tags"></i>
+									Promoções
+								</a>
+								<a class="dropdown-item" href="/compras">
+									<i class="bi bi-cart"></i>
+									Compras
+								</a>
+								 <li><hr class="dropdown-divider"></li>
+								<a class="dropdown-item" th:href="@{/logout}"><i class="bi bi-box-arrow-left"></i>
+									Logout
+								</a>
+							</div>
+						</div>
+					</div>
+					<div th:unless="${#authorization.expression('isAuthenticated')}">
+						<a href="/login" class="btn btn-light"><i class="bi bi-box-arrow-in-left"></i> Login</a>
+						<a th:href="@{/register}" class="btn btn-outline-light"><i
+								class="bi bi-person-add"></i> Registrar-se</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+</header>

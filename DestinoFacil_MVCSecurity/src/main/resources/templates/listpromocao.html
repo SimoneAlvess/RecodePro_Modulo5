@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout ('Destinos', ~{::main}, ~{::styles}, ~{::script})}">
+
+<head>
+</head>
+
+<body>
+
+	<main>
+		<section>
+			<div class="container-fluid shadow rounded-bottom bgPages">
+				<div class="container">
+					<h2>Encontre seu destino dos sonhos e embarque em uma aventura inesquecível</h2>
+					<p class="lead">Venha conhecer destinos deslumbrantes com preços imperdíveis que cabem no seu bolso!
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-5 container">
+			<div class="row">
+				<div th:each="destino : ${destinos}" class="col-lg-3">
+					<div class="card border-0 shadow mb-4 rounded-4">
+						<img th:src="${destino.urlImagem}" alt="Imagem do Destino"
+							class="card-img-top rounded-top-4 shadow" style="height: 170px;">
+						<div class="card-body px-4">
+							<h4 class="card-title pb-2" th:text="${destino.destino}"></h4>
+
+							<div class="card-text d-flex align-items-center">
+								<i class="bi bi-check-circle iconsStyle me-2 mt-1"></i>
+								<span th:text="${destino.transporte}"></span><br>
+							</div>
+
+							<div class="card-text d-flex align-items-center">
+								<i class="bi bi-check-circle iconsStyle me-2 mt-1"></i>
+								<span th:text="${destino.promocao.pacote}"></span>
+							</div>
+
+							<div class="card-text d-flex align-items-center">
+								<i class="bi bi-patch-check-fill iconsStyle me-2 mt-1"></i>
+								<span th:text="${'Desconto: ' + destino.promocao.desconto + '%'}"></span> 
+							</div>
+
+							<p class="card-text">
+								<h5 th:text="${'R$' + destino.precoTotal}"></h5>
+								De: R$<span class="text-decoration-line-through" th:text="${destino.preco}"> <br>
+							</p>
+						</div>
+						<div class="card-footer border-0 bg-transparent px-4 pb-4 pt-0">
+							<a href="/compras" class="btn btn-primary">Comprar</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout ('Clientes', ~{::main}, ~{::styles}, ~{::script})}">
+
+<head></head>
+
+<body>
+	
+	<main>
+		<section class="py-5 container">
+			<div>
+				<a class="btn btn-lg btn-primary mb-3 shadow" th:href="@{clientes/cadastrar}">Novo Cliente</a>
+			</div>
+			<div class="card shadow border-0">
+				<div class="card-header p-4 border-0 d-flex my-auto">
+					<i class="bi bi-people-fill fs-3 me-2 iconsStyle"></i>
+					<h5>Clientes</h5>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-hover table-borderless">
+							<thead>
+								<tr>
+									<th scope="col">ID</th>
+									<th scope="col">Nome</th>
+									<th scope="col">E-mail</th>
+									<th scope="col">Opções</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="cliente : ${clientes}">
+									<td th:text="${cliente.id}"></td>
+									<td th:text="${cliente.nome}"></td>
+									<td th:text="${cliente.email}"></td>
+									<td class="d-flex gap-2">
+										<a class="btn btn-primary d-flex align-items-center" title="Editar" th:href="@{clientes/{id}/editar (id=${cliente.id})}">
+											<i class="bi bi-pencil-square me-1"></i>
+											Editar
+										</a>
+										<!-- Excluir -->
+										<a class="btn btn-danger d-flex align-items-center" title="Excluir"
+											data-bs-toggle="modal"
+											th:data-bs-target="'#confirmDeleteModal-' + ${cliente.id}">
+											<i class="bi bi-trash3 me-1"></i>
+											Excluir
+										</a>
+										<!-- Inicio Modal Delete -->
+										<div class="modal fade" th:id="'confirmDeleteModal-' + ${cliente.id}"
+											tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content align-items-center p-3">
+													<img src="/imagens/delete_aviso.jpg" height="150" width="148" />
+													<div class="modal-body text-center">
+														<div class="modalTitle">Tem a certeza?</div>
+														<span>Deseja excluir o cliente
+															<span th:text="${cliente.nome}"></span>?
+														</span>
+													</div>
+													<div class="p-2 d-flex gap-2 justify-content-center">
+														<a type="button"
+															th:href="@{/clientes/{id}/excluir (id=${cliente.id})}"
+															class="btn btn-danger">Confirmar</a>
+														<a type="button" class="btn btn-primary"
+															href="/clientes">Cancelar</a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Fim Modal Delete-->
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+</body>
+
+</html>

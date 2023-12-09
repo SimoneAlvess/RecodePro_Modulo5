@@ -1,0 +1,197 @@
+/** Fonts Google **/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+/** Estilo corpo páginas **/
+:root {
+	--text-color-white: white;
+	--text-color-black: black;
+	--text-color-blue: #0d6efd;
+	--icon-color: #0d6efd;
+	--bg-color: #0d6efd;
+	--bg-color-Two: rgb(107, 166, 254);
+	--bg-pages-url: url(../imagens/background_cadastros.jpg);
+	--footer-color: #0d6efd;
+	--button-color: #0d6efd;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+main {
+	flex-grow: 1;
+}
+
+/** Estilo navbar **/
+.nav-link {
+	padding-right: 13px !important;
+}
+
+/** Estilos cadastros-login e forms**/
+.bgRegisterLogin {
+	background: linear-gradient(to right, var(--bg-color), var(--bg-color-Two)) !important;
+	overflow: hidden !important;
+}
+
+.area-register {
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+}
+
+.register {
+	background: white;
+	width: 375px;
+	min-height: 440px;
+	padding: 37px 50px 35px 50px;
+	border-radius: 15px;
+}
+
+.register form {
+	display: flex;
+	flex-direction: column;
+}
+
+.register label {
+	font-weight: 500;
+	font-size: 15px;
+}
+
+.formStyle {
+	border-radius: 12px !important;
+	padding: 10px 37px !important;
+}
+
+.input-container {
+	position: relative;
+}
+
+.input-container i {
+	position: absolute;
+	top: 32px;
+	left: 12px;
+	color: var(--text-color-blue);
+}
+
+/**Estilos buttons**/
+.btnGroup {
+	background-color: var(--button-color) !important;
+	color: var(--text-color-white) !important;
+	border-radius: 12px !important;
+	border: 0px !important;
+	padding: 9px 20px !important;
+}
+
+.btnGroup:hover {
+	background-color: dodgerblue !important;
+}
+
+.btnGroupThree {
+	background: linear-gradient(to right, var(--bg-color), var(--bg-color-Two)) !important;
+	color: var(--text-color-white) !important;
+	border-radius: 12px !important;
+	border: 0px !important;
+	padding: 9px 20px !important;
+}
+
+.btnGroupThree:hover {
+	background: linear-gradient(to right, var(--bg-color-Two), var(--bg-color)) !important;
+}
+
+.btnGroupFor {
+	color: var(--text-color-blue) !important;
+	background-color: white !important;
+	font-weight: 500 !important;
+	display: flex !important;
+	align-items: center !important;
+	height: 34px !important;
+}
+
+.btnGroupFor:hover {
+	background-color: rgb(218, 233, 254) !important;
+
+}
+
+/** Estilos icones **/
+.iconSocial:hover {
+	color: rgb(119, 187, 255) !important;
+	cursor: pointer;
+}
+
+.iconPerfil {
+	color: var(--text-color-white);
+	cursor: pointer;
+}
+
+.iconPerfil:hover {
+	color: rgb(157, 206, 255);
+}
+
+.iconsStyle {
+	color: var(--text-color-blue) !important;
+	display: flex;
+	padding-bottom: 5px;
+}
+
+/** Estilo footer**/
+.customFooter {
+	background-color: var(--footer-color);
+	color: var(--text-color-white);
+	padding: 17px 0 24px 0;
+}
+
+/** Estilos cards **/
+.card-header {
+	background-color: rgb(243, 248, 254) !important;
+}
+
+/** Estilo inputs forms**/
+.formStyleTwo {
+	border-radius: 12px !important;
+	padding: 10px 10px 10px 37px !important;
+}
+
+/** Estilo Home **/
+.bgHome {
+	background: var(--bg-pages-url) top/cover;
+	color: var(--text-color-white);
+}
+
+/**Estilo paginas **/
+.bgPages {
+	background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), var(--bg-pages-url) top/cover;
+	color: var(--text-color-white);
+	padding: 130px 0 110px 0;
+	text-align: center;
+}
+
+.bgDestino {
+	background: var(--bg-pages-url) top/cover;
+	min-height: 39rem;
+}
+
+.bgContact {
+	background: var(--bg-pages-url);
+	padding: 60px 0;
+}
+
+/** Estilo modals **/
+.modalTitle {
+	font-weight: 600;
+	font-size: 25px;
+	padding: 0 0 7px 0;
+}
+
+.modalStyle {
+	padding: 70px 32px 0 32px;
+}

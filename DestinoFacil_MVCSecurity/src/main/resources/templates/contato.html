@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout ('Destinos', ~{::main}, ~{::styles}, ~{::script})}">
+
+<head>
+</head>
+
+<body>
+
+	<main class="bgContact">
+		<section>
+			<div class="container shadow">
+				<div class="row">
+					<div class="col-md-5 p-5 order-sm-first order-last bg-white text-dark">
+						<h2>Nossos Contatos</h2>
+						<p class="fonte">Tem alguma dúvida? Deixe-nos saber. Estamos apenas a um e-mail de distância.
+						</p>
+						<div class="d-flex mt-3 align-items-center">
+							<i class="bi bi-envelope bi-style fs-3"></i>
+							<p class="mt-3 ms-2 fonte">destinofacil@gmail.com.br</p>
+						</div>
+						<div class="d-flex mt-2 align-items-center">
+							<i class="bi bi-telephone bi-style fs-3"></i>
+							<p class="mt-3 ms-2 fonte"> +55 (88)99999-9999</p>
+						</div>
+						<div class="d-flex mt-2 align-items-center">
+							<i class="bi bi-instagram bi-style fs-3"></i>
+							<p class="mt-3 ms-2 fonte">@destinofacil</p>
+						</div>
+						<div class="d-flex mt-2 align-items-center">
+							<i class="bi bi-facebook bi-style fs-3"></i>
+							<p class="mt-3 ms-2 fonte">@agencia_destinofacil</p>
+						</div>
+					</div>
+
+					<div class="col-md-7 bg-primary p-5 text-white">
+						<h2>Contate-nos</h2>
+						<form method="post" class="row g-3 contactForm mt-4">
+							<div class="col-md-6">
+								<label for="nome" class="form-label">Nome</label>
+								<input type="text" class="form-control" id="nome" required>
+							</div>
+							<div class="col-md-6">
+								<label for="sobrenome" class="form-label">Sobrenome</label>
+								<input type="text" class="form-control" id="sobrenome" required>
+							</div>
+							<div class="col-12">
+								<label for="email" class="form-label">Email</label>
+								<input type="email" class="form-control" id="email">
+							</div>
+							<div class="col-12">
+								<label for="assunto" class="form-label">Assunto</label>
+								<input type="text" class="form-control" id="assunto">
+							</div>
+							<div class="col-mb-3">
+								<label for="mensagem" class="form-label">Mensagem</label>
+								<textarea class="form-control" id="mensagem" rows="3"></textarea>
+							</div>
+							<div class="col-12">
+								<button type="submit" class="btn btn-light text-primary mt-3">Enviar</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

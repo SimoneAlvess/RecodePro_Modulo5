@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout ('Promoção', ~{::main}, ~{::styles}, ~{::script})}">
+
+<head></head>
+
+<body>
+	
+	<main>
+		<section class="py-5 container">
+			<div class="card shadow border-0">
+				<div class="card-header border-0 py-4 px-5">
+					<h5>Promoções | Dados Cadastrais</h5>
+				</div>
+				<div class="p-5">
+					<form th:object="${promocaoDto}" method="post">
+						<input type="hidden" th:field="*{idPromocao}" />
+
+						<div class="mb-3 input-container">
+							<label for="Pacote">Pacote</label>
+							<i class="bi bi-globe-americas fs-5"></i>
+							<select class="form-select formStyleTwo" id="pacote" th:field="*{pacote}">
+								<option value="">Escolha o tipo de pacote</option>
+								<option value="Nacional">Nacional</option>
+								<option value="Internacional">Internacional</option>
+							</select>
+							<small th:if="${#fields.hasErrors('pacote')}" class="text-danger"
+								th:text="${#fields.errors('pacote')}"></small>
+						</div>
+
+						<div class="mb-3 input-container">
+							<label for="Desconto">Desconto</label>
+							<i class="bi bi-percent fs-5"></i>
+							<input class="form-control formStyleTwo" type="number" id="desconto" th:field="*{desconto}" placeholder="Desconto"
+								autofocus />
+							<small th:if="${#fields.hasErrors('desconto')}" class="text-danger"
+								th:text="${#fields.errors('desconto')}"></small>
+						</div>
+						
+						<div class="mb-4 input-container">
+							<label for="Validade da Promoção">Validade da Promoção</label>
+							<i class="bi bi-calendar-check fs-5"></i>
+							<input class="form-control formStyleTwo" type="datetime-local" id="validadePromocao" th:field="*{validadePromocao}" />
+							<small th:if="${#fields.hasErrors('validadePromocao')}" class="text-danger"
+								th:text="${#fields.errors('validadePromocao')}"></small>
+						</div>
+
+						<div class="d-flex gap-2">
+							<button type="submit" class="btn btn-primary">Salvar</button>
+							<a href="/promocoes" class="btn btn-danger">Cancelar</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+	</main>
+	
+</body>
+
+</html>

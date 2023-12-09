@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout ('Destinos', ~{::main}, ~{::styles}, ~{::script})}">
+
+<head>
+</head>
+
+<body>
+
+	<main class="bgDestino pt-3">
+		<section>
+			<div class="container mt-5 mb-4 text-white">
+				<h2>Embarque na sua próxima aventura.</h2>
+				<h6>Encontre agora seu destino dos sonhos!</h6>
+			</div>
+
+			<div class="container p-4 shadow bg-white">
+				<div class="row">
+					<div class="col-md-12">
+						<form method="get">
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="ida"
+									value="ida">
+								<label class="form-check-label" for="ida">Ida</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="idavolta"
+									value="idavolta">
+								<label class="form-check-label" for="idavolta">Ida e Volta</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="vdestinos"
+									value="vdestinos">
+								<label class="form-check-label" for="vdestinos">Vários destinos</label>
+							</div>
+
+							<div class="row py-2">
+								<div class="col-sm-4">
+									<label for="origem" class="form-label">Origem</label>
+									<input type="text" class="form-control" id="origem" aria-label="origem">
+								</div>
+								<div class="col-sm-4">
+									<label for="destino" class="form-label">Destino</label>
+									<input type="text" class="form-control" id="destino" aria-label="destino">
+								</div>
+								<div class="col-sm-4">
+									<label for="qtpessoas" class="form-label">Quantidade de pessoas</label>
+									<input type="text" class="form-control" id="qtpessoas" aria-label="qtpessoas">
+								</div>
+							</div>
+
+							<div class="row py-2 align-items-sm-end ">
+								<div class="col-sm-4 mb-2 mb-sm-0">
+									<label for="dtida" class="form-label">Data de ida</label>
+									<input type="date" class="form-control" id="dtida" aria-label="dtida">
+								</div>
+								<div class="col-sm-4 mb-3 mb-sm-0">
+									<label for="dtvolta" class="form-label">Data de volta</label>
+									<input type="date" class="form-control" id="dtvolta" aria-label="dtvolta">
+								</div>
+								<div class="col-sm-4 d-grid gap-2 d-md-block">
+									<button class="btn btn-primary btn-sm" type="submit">Pesquisar</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+</body>
+
+</html>

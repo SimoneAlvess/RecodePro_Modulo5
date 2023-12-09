@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout ('Cliente', ~{::main}, ~{::styles}, ~{::script})}">
+
+
+<head></head>
+
+<body>
+
+	<main>
+		<section class="py-5 container">
+			<div class="card shadow border-0">
+				<div class="card-header border-0 py-4 px-5">
+					<h5>Cliente | Dados Cadastrais</h5>
+				</div>
+				<div class="p-5">
+					<form method="post" role="form" th:object="${cliente}">
+						<input type="hidden" th:field="*{id}" />
+
+						<div class="my-2 input-container">
+							<label for="nome"> Nome</label>
+							<i class="bi bi-person-circle fs-5"></i>
+							<input class="form-control formStyle" type="text" id="nome" name="nome" th:field="*{nome}"
+								placeholder="Nome" autofocus />
+							<small th:if="${#fields.hasErrors('nome')}" class="text-danger"
+								th:text="${#fields.errors('nome')}"></small>
+						</div>
+
+						<div class="mb-2 input-container">
+							<label for="email">Email</label>
+							<i class="bi bi-envelope fs-5"></i>
+							<input class="form-control formStyle" type="email" id="email" name="email"
+								th:field="*{email}" placeholder="Email" autofocus />
+							<small th:if="${#fields.hasErrors('email')}" class="text-danger"
+								th:text="${#fields.errors('email')}"></small>
+						</div>
+
+						<div class="mb-4 input-container">
+							<label for="senha">Senha</label>
+							<i class="bi bi-lock-fill fs-5"></i>
+							<input class="form-control formStyle" type="password" id="senha" name="senha"
+								th:field="*{senha}" placeholder="Senha" autofocus />
+							<small th:if="${#fields.hasErrors('senha')}" class="text-danger"
+								th:text="${#fields.errors('senha')}"></small>
+						</div>
+
+						<div class="mb-3 d-flex gap-2">
+							<button class="btn btn-primary" type="submit">Salvar</button>
+							<a class="btn btn-danger" href="/clientes">Cancelar</a>
+						</div>
+					</form>
+					<!-- Fim Form Cadastrar -->
+				</div>
+			</div>
+		</section>
+	</main>
+
+</body>
+
+</html>

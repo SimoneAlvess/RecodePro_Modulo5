@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout ('Destino', ~{::main}, ~{::styles}, ~{::script})}">
+
+
+<head></head>
+
+<body>
+
+	<main>
+		<section class="py-5 container">
+			<div class="card shadow border-0">
+				<div class="card-header border-0 py-4 px-5">
+					<h5>Destino | Dados Cadastrais</h5>
+				</div>
+				<div class="p-5">
+					<form th:object="${destinoDto}" method="post">
+						<input type="hidden" th:field="*{idDestino}" />
+
+						<div class="mb-3 input-container">
+							<label for="Destino">Destino</label>
+							<i class="bi bi-geo-alt fs-5"></i>
+							<input class="form-control formStyleTwo" type="text" id="destino" th:field="*{destino}"
+								placeholder="Destino" autofocus />
+							<small th:if="${#fields.hasErrors('destino')}" class="text-danger"
+								th:text="${#fields.errors('destino')}"></small>
+						</div>
+
+						<div class="mb-3 input-container">
+							<label for="Preço">Preço</label>
+							<i class="bi bi-cash-stack fs-5"></i>
+							<input class="form-control formStyleTwo" type="number" id="preco" th:field="*{preco}"
+								placeholder="Preço" autofocus />
+							<small th:if="${#fields.hasErrors('preco')}" class="text-danger"
+								th:text="${#fields.errors('preco')}"></small>
+						</div>
+
+						<div class="mb-3 input-container">
+							<label for="Transporte">Transporte</label>
+							<i class="bi bi-bus-front fs-5"></i>
+							<select class="form-select formStyleTwo" id="transporte" th:field="*{transporte}">
+								<option value="">Escolha forma de transporte</option>
+								<option value="Aéreo">Aéreo</option>
+								<option value="Rodoviário">Rodoviário</option>
+							</select>
+							<small th:if="${#fields.hasErrors('transporte')}" class="text-danger"
+								th:text="${#fields.errors('transporte')}"></small>
+						</div>
+
+						<div class="mb-4 input-container">
+							<label for="Promoção">Promoção</label>
+							<i class="bi bi-tags fs-5"></i>
+							<select class="form-select formStyleTwo" id="promocao" th:field="*{promocao}">
+								<option value="">Escolha uma promoção</option>
+								<option th:each="promo : ${promocao}" th:value="${promo.idPromocao}">
+									Pacote: <span th:text="${promo.pacote}"></span> - Desconto: <span
+										th:text="${promo.desconto}"></span>%
+								</option>
+							</select>
+							<small th:if="${#fields.hasErrors('promocao')}" class="text-danger"
+								th:text="${#fields.errors('promocao')}"></small>
+						</div>
+
+						<div class="mb-3 input-container">
+							<label for="UrlImagem">URL da Imagem</label>
+							<i class="bi bi-image fs-5"></i>
+							<input class="form-control formStyleTwo" type="text" id="urlImagem" th:field="*{urlImagem}"
+								placeholder="URL da Imagem" autofocus />
+							<small th:if="${#fields.hasErrors('urlImagem')}" class="text-danger"
+								th:text="${#fields.errors('urlImagem')}"></small>
+						</div>
+						
+						<div class="d-flex gap-2">
+							<button type="submit" class="btn btn-primary">Salvar</button>
+							<a href="/destinos" class="btn btn-danger">Cancelar</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+	</main>
+
+</body>
+
+</html>

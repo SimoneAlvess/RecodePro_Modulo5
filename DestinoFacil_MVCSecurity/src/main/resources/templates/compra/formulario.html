@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html th:replace="~{layout :: layout ('Compra', ~{::main}, ~{::styles}, ~{::script})}">
+
+
+<head></head>
+
+<body>
+
+	<main>
+		<section class="py-5 container">
+			<div class="card shadow border-0">
+				<div class="card-header border-0 py-4 px-5">
+					<h5>Compra | Dados Cadastrais</h5>
+				</div>
+				<div class="p-5">
+					<form th:object="${compraDto}" method="post">
+						<input type="hidden" th:field="*{idCompra}" />
+
+						<div class="mb-4 input-container">
+							<label for="Cliente">Cliente</label>
+							<i class="bi bi-people fs-5"></i>
+							<select class="form-select formStyleTwo" id="cliente" th:field="*{cliente}">
+								<option value="">Escolha um cliente</option>
+								<option th:each="clientes : ${cliente}" th:value="${clientes.id}">
+									<span th:text="${clientes.nome}"></span>
+								</option>
+							</select>
+							<small th:if="${#fields.hasErrors('cliente')}" class="text-danger"
+								th:text="${#fields.errors('cliente')}"></small>
+						</div>
+
+						<div class="mb-4 input-container">
+							<label for="Destino">Destino</label>
+						<i class="bi bi-geo-alt fs-5"></i>
+							<select class="form-select formStyleTwo" id="destino" th:field="*{destino}">
+								<option value="">Escolha um destino</option>
+								<option th:each="destins : ${destino}" th:value="${destins.idDestino}">
+									<span th:text="${destins.destino}"></span>
+								</option>
+							</select>
+							<small th:if="${#fields.hasErrors('destino')}" class="text-danger"
+								th:text="${#fields.errors('destino')}"></small>
+						</div>
+
+						<div class="mb-3 input-container">
+							<label for="Data/Hora da Viagem">Data/Hora da Viagem</label>
+							<i class="bi bi-calendar fs-5"></i>
+							<input class="form-control formStyleTwo" type="datetime-local" id="dataHoraViagem"
+								th:field="*{dataHoraViagem}" />
+							<small th:if="${#fields.hasErrors('dataHoraViagem')}" class="text-danger"
+								th:text="${#fields.errors('dataHoraViagem')}"></small>
+						</div>
+
+						<div class="mb-4 input-container">
+							<label for="Forma de Pagamento">Forma de Pagamento</label>
+							<i class="bi bi-credit-card fs-5"></i>
+							<select class="form-select formStyleTwo" id="formaPagamento" th:field="*{formaPagamento}">
+								<option value="">Escolha forma de pagamento</option>
+								<option value="Crédito">Crédito</option>
+								<option value="Débito">Débito</option>
+							</select>
+							<small th:if="${#fields.hasErrors('formaPagamento')}" class="text-danger"
+								th:text="${#fields.errors('formaPagamento')}"></small>
+						</div>
+
+						<div class="d-flex gap-2">
+							<button type="submit" class="btn btn-primary">Salvar</button>
+							<a href="/compras" class="btn btn-danger">Cancelar</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+	</main>
+
+</body>
+
+</html>
