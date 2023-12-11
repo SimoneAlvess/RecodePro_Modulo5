@@ -56,7 +56,26 @@ public class ClienteController {
 		clienteService.saveCliente(clienteDto);
 		return "redirect:/clientes?success";
 	}
-	
+
+	@GetMapping("/{id}/editar")
+	public String editar(@PathVariable Long id, Model model) {
+		Cliente cliente = clienteService.findById(id);
+		model.addAttribute("cliente", cliente);
+		return "cliente/formulario";
+	}
+
+	@PostMapping("/{id}/editar")
+	public String editarCliente(@PathVariable Long id, @Valid @ModelAttribute("cliente") ClienteDto clienteDto,
+			BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			model.addAttribute("cliente", clienteDto);
+			return "cliente/formulario";
+		}
+
+		clienteService.editarCliente(id, clienteDto);
+
+		return "redirect:/clientes?success";
+	}
 
 	@GetMapping("/{id}/excluir")
 	public String excluir(@PathVariable Long id) {
