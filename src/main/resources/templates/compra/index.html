@@ -23,8 +23,9 @@
 									<th scope="col">ID</th>
 									<th scope="col">Cliente</th>
 									<th scope="col">Destino</th>
-									<th scope="col">Forma de Pagamento</th>
 									<th scope="col">Data/Hora da Viagem</th>
+									<th scope="col">Forma de Pagamento</th>
+									<th scope="col">Preço à Pagar</th>
 									<th scope="col">Opções</th>
 								</tr>
 							</thead>
@@ -33,11 +34,13 @@
 									<td th:text="${compra.idCompra}"></td>
 									<td th:text="${compra.cliente.nome}"></td>
 									<td th:text="${compra.destino.destino}"></td>
-									<td th:text="${compra.formaPagamento}"></td>
 									<td th:text="${compra.dataHoraViagem}"></td>
+									<td th:text="${compra.formaPagamento}"></td>
+									<td th:text="${compra.destino.precoTotal}"></td>
 									<td class="d-flex gap-2">
 										<!-- Editar -->
-										<a class="btn btn-primary d-flex align-items-center" title="Editar" th:href="@{/compras/{id}/editar (id=${compra.idCompra})}">
+										<a class="btn btn-primary d-flex align-items-center" title="Editar"
+											th:href="@{/compras/{id}/editar (id=${compra.idCompra})}">
 											<i class="bi bi-pencil-square me-1"></i>
 											Editar
 										</a>
@@ -58,7 +61,8 @@
 													<div class="modal-body text-center">
 														<div class="modalTitle">Tem a certeza?</div>
 														<span>Deseja excluir a compra do(a)
-															<span th:text="${compra.cliente.nome}"></span> com destino para
+															<span th:text="${compra.cliente.nome}"></span> com destino
+															para
 															<span th:text="${compra.destino.destino}"></span>?
 														</span>
 													</div>
