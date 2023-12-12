@@ -36,7 +36,7 @@
 									<td th:text="${compra.destino.destino}"></td>
 									<td th:text="${compra.dataHoraViagem}"></td>
 									<td th:text="${compra.formaPagamento}"></td>
-									<td th:text="${compra.destino.precoTotal}"></td>
+									<td th:text="${'R$' + compra.destino.precoTotal}"></td>
 									<td class="d-flex gap-2">
 										<!-- Editar -->
 										<a class="btn btn-primary d-flex align-items-center" title="Editar"

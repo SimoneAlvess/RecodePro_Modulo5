@@ -40,9 +40,9 @@
 									</td>
 
 									<td th:text="${destino.transporte}"></td>
-									<td th:text="${destino.preco}"></td>
+									<td th:text="${'R$' + destino.preco}"></td>
 									<td th:text="${destino.promocao.desconto +'%'}"></td>
-									<td th:text="${destino.precoTotal}"></td>
+									<td th:text="${'R$' + destino.precoTotal}"></td>
 									<td class="d-flex gap-2">
 										<!-- Editar -->
 										<a class="btn btn-primary d-flex align-items-center" title="Editar"
