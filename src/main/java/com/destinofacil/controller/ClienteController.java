@@ -29,14 +29,14 @@ public class ClienteController {
 	public String clientes(Model model) {
 		List<ClienteDto> clientes = clienteService.findAllClientes();
 		model.addAttribute("clientes", clientes);
-		return "cliente/clientes";
+		return "cliente/index";
 	}
 
 	@GetMapping("/cadastrar")
 	public String cadastrar(Model model) {
 		ClienteDto cliente = new ClienteDto();
 		model.addAttribute("cliente", cliente);
-		return "cliente/formulario";
+		return "cliente/form";
 	}
 
 	@PostMapping("/cadastrar")
@@ -50,7 +50,7 @@ public class ClienteController {
 
 		if (result.hasErrors()) {
 			model.addAttribute("cliente", clienteDto);
-			return "cliente/formulario";
+			return "cliente/form";
 		}
 
 		clienteService.saveCliente(clienteDto);
@@ -61,7 +61,7 @@ public class ClienteController {
 	public String editar(@PathVariable Long id, Model model) {
 		Cliente cliente = clienteService.findById(id);
 		model.addAttribute("cliente", cliente);
-		return "cliente/formulario";
+		return "cliente/form";
 	}
 
 	@PostMapping("/{id}/editar")
@@ -69,7 +69,7 @@ public class ClienteController {
 			BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			model.addAttribute("cliente", clienteDto);
-			return "cliente/formulario";
+			return "cliente/form";
 		}
 
 		clienteService.editarCliente(id, clienteDto);

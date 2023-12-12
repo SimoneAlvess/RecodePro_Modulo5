@@ -28,26 +28,22 @@ public class PromocaoController {
 	private PromocaoService promocaoService;
 
 	@GetMapping("/promocoesdisponiveis")
-	public ModelAndView listPromo() {
-		ModelAndView modelAndView = new ModelAndView("listpromocao");
-
+	public ModelAndView promoList() {
+		ModelAndView modelAndView = new ModelAndView("promocao");
 		modelAndView.addObject("destinos", destinoService.findAllDestinos());
-
 		return modelAndView;
 	}
 
 	@GetMapping
-	public ModelAndView listagem() {
-		ModelAndView modelAndView = new ModelAndView("promocao/promocoes");
-
+	public ModelAndView promocoes() {
+		ModelAndView modelAndView = new ModelAndView("promocao/index");
 		modelAndView.addObject("promocoes", promocaoService.findAllPromocoes());
-
 		return modelAndView;
 	}
 
 	@GetMapping("/cadastrar")
 	public ModelAndView cadastrar() {
-		ModelAndView modelAndView = new ModelAndView("promocao/formulario");
+		ModelAndView modelAndView = new ModelAndView("promocao/form");
 		modelAndView.addObject("promocaoDto", new PromocaoDto());
 		return modelAndView;
 	}
@@ -56,7 +52,7 @@ public class PromocaoController {
 	public String cadastrar(@ModelAttribute @Valid PromocaoDto promocaoDto, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			model.addAttribute("promocaoDto", promocaoDto);
-			return "promocao/formulario";
+			return "promocao/form";
 		}
 
 		promocaoService.salvarPromocao(promocaoDto);
@@ -65,7 +61,7 @@ public class PromocaoController {
 
 	@GetMapping("/{id}/editar")
 	public ModelAndView editar(@PathVariable Long id) {
-		ModelAndView modelAndView = new ModelAndView("promocao/formulario");
+		ModelAndView modelAndView = new ModelAndView("promocao/form");
 		modelAndView.addObject("promocaoDto", promocaoService.findById(id));
 		return modelAndView;
 	}
@@ -75,7 +71,7 @@ public class PromocaoController {
 			Model model) {
 		if (result.hasErrors()) {
 			model.addAttribute("promocaoDto", promocaoDto);
-			return "promocao/formulario";
+			return "promocao/form";
 		}
 
 		promocaoService.editarPromocao(id, promocaoDto);

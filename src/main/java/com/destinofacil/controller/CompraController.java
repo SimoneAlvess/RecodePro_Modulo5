@@ -32,17 +32,15 @@ public class CompraController {
 	private ClienteRepository clienteRepository;
 
 	@GetMapping
-	public ModelAndView listagem() {
-		ModelAndView modelAndView = new ModelAndView("compra/compras");
-
+	public ModelAndView compras() {
+		ModelAndView modelAndView = new ModelAndView("compra/index");
 		modelAndView.addObject("compras", compraService.findAllCompras());
-
 		return modelAndView;
 	}
 	
 	@GetMapping("/cadastrar")
 	public ModelAndView cadastrar() {
-		ModelAndView modelAndView = new ModelAndView("compra/formulario");
+		ModelAndView modelAndView = new ModelAndView("compra/form");
 		modelAndView.addObject("compraDto", new CompraDto());
 		modelAndView.addObject("cliente", clienteRepository.findAll());
 		modelAndView.addObject("destino", destinoRepository.findAll());
@@ -56,7 +54,7 @@ public class CompraController {
 			model.addAttribute("cliente", clienteRepository.findAll());
 			model.addAttribute("destino", destinoRepository.findAll());
 			
-			return "compra/formulario";
+			return "compra/form";
 		}
 
 		compraService.salvarCompra(compraDto);
@@ -65,7 +63,7 @@ public class CompraController {
 	
 	@GetMapping("/{id}/editar")
 	public ModelAndView editar(@PathVariable Long id) {
-		ModelAndView modelAndView = new ModelAndView("compra/formulario");
+		ModelAndView modelAndView = new ModelAndView("compra/form");
 		modelAndView.addObject("compraDto", compraService.findById(id));
 		modelAndView.addObject("cliente", clienteRepository.findAll());
 		modelAndView.addObject("destino", destinoRepository.findAll());
@@ -79,7 +77,7 @@ public class CompraController {
 			model.addAttribute("compraDto", compraDto);
 			model.addAttribute("cliente", clienteRepository.findAll());
 			model.addAttribute("destino", destinoRepository.findAll());
-			return "compra/formulario";
+			return "compra/form";
 		}
 
 		compraService.editarCompra(id, compraDto);

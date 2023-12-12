@@ -27,17 +27,15 @@ public class DestinoController {
 	private PromocaoRepository promocaoRepository;
 
 	@GetMapping
-	public ModelAndView listagem() {
-		ModelAndView modelAndView = new ModelAndView("destino/destinos");
-
+	public ModelAndView destinos() {
+		ModelAndView modelAndView = new ModelAndView("destino/index");
 		modelAndView.addObject("destinos", destinoService.findAllDestinos());
-
 		return modelAndView;
 	}
 	
 	@GetMapping("/cadastrar")
 	public ModelAndView cadastrar() {
-		ModelAndView modelAndView = new ModelAndView("destino/formulario");
+		ModelAndView modelAndView = new ModelAndView("destino/form");
 		modelAndView.addObject("destinoDto", new DestinoDto());
 		modelAndView.addObject("promocao", promocaoRepository.findAll());
 		return modelAndView;
@@ -48,7 +46,7 @@ public class DestinoController {
 		if (result.hasErrors()) {
 			model.addAttribute("destinoDto", destinoDto);
 			model.addAttribute("promocao", promocaoRepository.findAll());
-			return "destino/formulario";
+			return "destino/form";
 		}
 
 		destinoService.salvarDestino(destinoDto);
@@ -57,7 +55,7 @@ public class DestinoController {
 
 	@GetMapping("/{id}/editar")
 	public ModelAndView editar(@PathVariable Long id) {
-		ModelAndView modelAndView = new ModelAndView("destino/formulario");
+		ModelAndView modelAndView = new ModelAndView("destino/form");
 		modelAndView.addObject("destinoDto", destinoService.findById(id));
 		modelAndView.addObject("promocao", promocaoRepository.findAll());
 		return modelAndView;
@@ -69,7 +67,7 @@ public class DestinoController {
 		if (result.hasErrors()) {
 			model.addAttribute("destinoDto", destinoDto);
 			model.addAttribute("promocao", promocaoRepository.findAll());
-			return "destino/formulario";
+			return "destino/form";
 		}
 
 		destinoService.editarDestino(id, destinoDto);
